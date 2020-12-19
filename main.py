@@ -1,4 +1,10 @@
 
+import random
+import colorama
+
+colorama.init()
+
+
 class Array:
     def __init__(self):
         self.are_you_winning_son = False
@@ -82,3 +88,5 @@ class Array:
             print()
         print()
 
+# stops using colorama
+colorama.deinit()
