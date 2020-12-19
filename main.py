@@ -12,3 +12,9 @@ class Array:
         self.__generate_new_tile()
         self.__generate_new_tile()
 
+
+    def __str__(self):
+        return "\n".join(["{0}".format(row) for row in self.matrix])
+
+    def __repr__(self):
+        return "\n".join(["{0}".format(row) for row in self.matrix])
