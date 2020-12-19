@@ -27,3 +27,12 @@ class Array:
             zeros += row.count(0)
         return zeros
 
+    def __rand(self, upper_limit):
+        '''Returns random integer number between zero (inclusive) and the input integer (also inclusive) - the upper_limit.
+
+    In case of the input is less than 0, it returns -1.'''
+        if upper_limit < 0:
+            return -1
+        else:
+            return random.randint(0, upper_limit)
+
