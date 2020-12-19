@@ -97,5 +97,26 @@ class Array:
                 total += cell
         return total
 
+    @property
+    def no_possible_moves(self):
+        # it's possible to move if there's at least one zero
+        if self.__zeros != 0:
+            return False
+        else:
+            # it can still move if there is no blank tile
+            for i, row in enumerate(self.matrix):
+                for j, cell in enumerate(row):
+                    if any([
+                            # check of inside values without first column and row
+                            (0 < i and 0 < j) and (self.matrix[i][j] == self.matrix[i-1][j]
+                                                   or self.matrix[i][j] == self.matrix[i][j-1]),
+                            # first column check
+                            0 < i and self.matrix[i][0] == self.matrix[i-1][0],
+                            # first row check
+                            0 < j and self.matrix[0][j] == self.matrix[0][j-1]]):
+                        return False
+            # no adjacent tile is the same
+            return True
+
 # stops using colorama
 colorama.deinit()
