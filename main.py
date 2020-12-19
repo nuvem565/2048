@@ -18,3 +18,12 @@ class Array:
 
     def __repr__(self):
         return "\n".join(["{0}".format(row) for row in self.matrix])
+
+    @property
+    def __zeros(self):
+        # calculates the number of blank tiles with value of 0
+        zeros = 0
+        for row in self.matrix:
+            zeros += row.count(0)
+        return zeros
+
