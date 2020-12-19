@@ -88,5 +88,14 @@ class Array:
             print()
         print()
 
+    @property
+    def score(self):
+        # prints the total score (sum of the tiles values)
+        total = 0
+        for row in self.matrix:
+            for cell in row:
+                total += cell
+        return total
+
 # stops using colorama
 colorama.deinit()
