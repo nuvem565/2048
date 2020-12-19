@@ -50,3 +50,20 @@ class Array:
                 elif cell == 0:
                     number_of_zero += 1
 
+    __colors_table = {
+        # font, background colors
+        "_": "\033[1;37;40m", # white, black
+        "2": "\033[1;37;40m", # white, black
+        "4": "\033[1;36;40m", # cyan, black
+        "8": "\033[1;34;40m", # blue, black
+        "16": "\033[1;32;40m", # green, black
+        "32": "\033[1;35;40m", # purple, black
+        "64": "\033[1;33;40m", # yellow, black
+        "128": "\033[1;31;40m", # red, black
+        "256": "\033[1;30;47m", # black, white
+        "512": "\033[1;35;47m", # purple, white
+        "1024": "\033[1;31;47m", # red, white
+        "2048": "\033[1;30;41m", # black, red
+        "no_match": "\033[1;33;41m" # yellow, red
+    }
+
