@@ -36,3 +36,17 @@ class Array:
         else:
             return random.randint(0, upper_limit)
 
+    def __generate_new_tile(self):
+        # between 0 and 15 (inclusive)
+        random_number = self.__rand(self.__zeros - 1)
+        # increment after finding the zero or after replacing the zero when hits the random number
+        number_of_zero = 0
+        for i, row in enumerate(self.matrix):
+            for j, cell in enumerate(self.matrix[i]):
+                if cell == 0 and number_of_zero == random_number:
+                    # 15% chances for 4, otherwise 2 to be placed as new random tile
+                    self.matrix[i][j] = 2 if random.random() < 0.85 else 4
+                    number_of_zero += 1
+                elif cell == 0:
+                    number_of_zero += 1
+
