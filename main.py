@@ -67,3 +67,18 @@ class Array:
         "no_match": "\033[1;33;41m" # yellow, red
     }
 
+    def print_matrix(self):
+        # shows the main matrix to the user
+        for row in self.matrix:
+            for cell in row:
+                cell = str(cell)
+                # replaces 0 by underscore in output
+                cell = "_" if "0" == cell else cell
+                # checks for appropriate font color in dict
+                color = self.__colors_table.get(cell, "no_match")
+                last_black_line = self.__colors_table.get("_")
+                print(f"{color}{cell: >5s}{last_black_line}", end=" ")
+            # line break after each row of matrix
+            print()
+        print()
+
