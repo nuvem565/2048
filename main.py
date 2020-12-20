@@ -208,5 +208,10 @@ class Array:
         self.__rotate180()
         self.__inform_or_generate_new_tile(actual)
 
+
+# The runtime of the game
+arr = Array()
+arr.print_matrix()
+pressed_button = input().lower()
 # stops using colorama
 colorama.deinit()
