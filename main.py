@@ -18,12 +18,20 @@ class Array:
         self.__generate_new_tile()
         self.__generate_new_tile()
 
-
     def __str__(self):
         return "\n".join(["{0}".format(row) for row in self.matrix])
 
     def __repr__(self):
         return "\n".join(["{0}".format(row) for row in self.matrix])
+
+    # flag for printing the message to winner
+    @property
+    def are_you_winning_son(self):
+        return self.__are_you_winning_son
+
+    @are_you_winning_son.setter
+    def are_you_winning_son(self, state):
+        self.__are_you_winning_son = state
 
     @property
     def __zeros(self):
