@@ -118,6 +118,24 @@ class Array:
             # no adjacent tile is the same
             return True
 
+
+    # auxiliary methods for matrix manipulations
+    def __rotate270(self):
+        # rotates the main matrix by -90 degrees
+        self.matrix = \
+            [[self.matrix[j][i] for j in range(len(self.matrix))]
+             for i in range(len(self.matrix[0])-1, -1, -1)]
+
+    def __rotate90(self):
+        self.matrix = \
+            [[self.matrix[j][i] for j in range(len(self.matrix)-1, -1, -1)]
+             for i in range(len(self.matrix))]
+
+    def __rotate180(self):
+        self.matrix = \
+            [[self.matrix[i][j] for j in range(len(self.matrix[0])-1, -1, -1)]
+             for i in range(len(self.matrix)-1, -1, -1)]
+
     def __move(self):
         # shift to the right
         # the universal type of movement
