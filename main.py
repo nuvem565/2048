@@ -213,5 +213,29 @@ class Array:
 arr = Array()
 arr.print_matrix()
 pressed_button = input().lower()
+
+while not (pressed_button.startswith("exit", 0) or arr.no_possible_moves):
+    # control flow
+    if pressed_button == "w":
+        arr.to_up()
+        arr.print_matrix()
+    elif pressed_button == "a":
+        arr.to_left()
+        arr.print_matrix()
+    elif pressed_button == "d":
+        arr.to_right()
+        arr.print_matrix()
+    elif pressed_button == "s":
+        arr.to_down()
+        arr.print_matrix()
+    else:
+        print()
+        print("\033[1;33;40mTo manipulate the matrix, type w, s, a or d buttons. Type \"exit\" to end the game")
+        print()
+    pressed_button = input().lower()
+
+print(f"Your score: {arr.score}")
+
 # stops using colorama
 colorama.deinit()
+
