@@ -159,5 +159,36 @@ class Array:
                     # if there is blank tile, shifts the slide of the rest of the row on the place of blank tile
                     self.matrix[i][0:j] = [0] + self.matrix[i][0:j-1]
 
+    # public functions for realising appropriate movement of the main matrix and its consequences
+    def to_down(self):
+        # the actual = self.matrix[:][:] doesn't work because of shallow copy property
+        # the actual var preserves the deepcopy of the main matrix before the movement
+        actual = [ [cell for cell in row] for row in self.matrix ]
+        # prints actual matrix shifted by some tabs (for debug purposes)
+        # print("\n\t\t\t\t\t" + "\n\t\t\t\t\t".join(["{0}".format(row) for row in actual]))
+        self.__rotate270()
+        self.__move()
+        self.__rotate90()
+        self.__inform_or_generate_new_tile(actual)
+
+    def to_up(self):
+        actual = [ [cell for cell in row] for row in self.matrix ]
+        self.__rotate90()
+        self.__move()
+        self.__rotate270()
+        self.__inform_or_generate_new_tile(actual)
+
+    def to_right(self):
+        actual = [ [cell for cell in row] for row in self.matrix ]
+        self.__move()
+        self.__inform_or_generate_new_tile(actual)
+
+    def to_left(self):
+        actual = [ [cell for cell in row] for row in self.matrix ]
+        self.__rotate180()
+        self.__move()
+        self.__rotate180()
+        self.__inform_or_generate_new_tile(actual)
+
 # stops using colorama
 colorama.deinit()
