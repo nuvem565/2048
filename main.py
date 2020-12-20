@@ -118,5 +118,28 @@ class Array:
             # no adjacent tile is the same
             return True
 
+    def __move(self):
+        # shift to the right
+        # the universal type of movement
+        # can be transformed into any other (to up, to bottom, to left) by matrix manipulations - rotate methods
+        # loops from the left to the right, from the top to the bottom of the matrix
+        for i in range(len(self.matrix)):
+            for j in range(len(self.matrix[0]) - 1):
+                if self.matrix[i][j+1] == 0:
+                    # shifts the previous cells to the direction of checking - to the right
+                    # allows to add the tiles that aren't next ot each other
+                    self.matrix[i][0:j+2] = [0] + self.matrix[i][0:j+1]
+        # loops from right to left, from the top to the bottom of the matrix
+        for i in range(len(self.matrix)):
+            for j in range(len(self.matrix[0]) - 1, 0, -1):
+                if self.matrix[i][j] == self.matrix[i][j-1]:
+                    # adds the tiles together
+                    self.matrix[i][j] += self.matrix[i][j-1]
+                    # and shifts the rest of the row
+                    self.matrix[i][0:j] = [0] + self.matrix[i][0:j-1]
+                elif self.matrix[i][j] == 0:
+                    # if there is blank tile, shifts the slide of the rest of the row on the place of blank tile
+                    self.matrix[i][0:j] = [0] + self.matrix[i][0:j-1]
+
 # stops using colorama
 colorama.deinit()
