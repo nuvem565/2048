@@ -118,6 +118,16 @@ class Array:
             # no adjacent tile is the same
             return True
 
+    def __inform_or_generate_new_tile(self, previous_matrix):
+        # chooses appropriate action after the movement
+        if self.no_possible_moves:
+            print("You lose!")
+        elif previous_matrix == self.matrix:
+            # if there is no change after the movement, don't add any new tile
+            self.matrix[:][:] = previous_matrix[:][:]
+        else:
+            # adds a new tile after checking for movement
+            self.__generate_new_tile()
 
     # auxiliary methods for matrix manipulations
     def __rotate270(self):
